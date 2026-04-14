@@ -6,12 +6,12 @@ import { en } from 'payload/i18n/en'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
-import { Portfolio } from './collections/Portfolio'
-import { Pricing } from './collections/Pricing'
-import { Testimonials } from './collections/Testimonials'
-import { Services } from './collections/Services'
+import { Users } from './collections/Users.js'
+import { Media } from './collections/Media.js'
+import { Portfolio } from './collections/Portfolio.js'
+import { Pricing } from './collections/Pricing.js'
+import { Testimonials } from './collections/Testimonials.js'
+import { Services } from './collections/Services.js'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
