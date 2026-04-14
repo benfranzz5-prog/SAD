@@ -1,0 +1,3 @@
+{
+  "buildCommand": "DATABASE_URL=$DATABASE_URL_UNPOOLED pnpm payload migrate && next build"
+}
