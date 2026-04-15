@@ -1,108 +1,44 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import { getContact } from '@/lib/cms'
 
-const services = [
-  { label: 'Interior & Exterior Detailing', href: '/services/interior-exterior-detailing' },
-  { label: 'Paint Rejuvenation', href: '/services/paint-rejuvenation' },
-  { label: 'Ceramic Coating', href: '/services/ceramic-coating' },
-  { label: 'Interior Detail', href: '/services/interior-details' },
-  { label: 'Exterior Detail', href: '/services/exterior-details' },
-]
-
-const pages = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'Testimonials', href: '/testimonials' },
-  { label: 'Contact', href: '/contact' },
-]
-
-export function Footer() {
+export default function Footer() {
+  const contact = getContact()
   const year = new Date().getFullYear()
 
   return (
-    <footer
-      role="contentinfo"
-      className="bg-[var(--color-surface-1)] border-t border-[var(--color-border)]"
-    >
-      <div className="container-site">
-        {/* Main footer grid */}
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+    <footer className="bg-forest text-primary/80" role="contentinfo">
+      <div className="container py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           {/* Brand column */}
-          <div className="lg:col-span-1">
-            <Link href="/" aria-label="Sebastian's Automotive Detailing — Home">
-              <Image
-                src="/images/SAD-LOGO11.png"
-                alt="Sebastian's Automotive Detailing"
-                width={120}
-                height={48}
-                className="h-12 w-auto object-contain mb-6"
-              />
+          <div>
+            <Link
+              href="/"
+              className="font-heading text-2xl font-800 uppercase tracking-[-0.01em] text-primary block mb-4"
+            >
+              SAD
             </Link>
-            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-6">
-              Premium mobile car detailing in Adelaide, South Australia. We come to you —
-              wherever you are.
+            <p className="text-sm leading-relaxed text-green-100/70 max-w-xs">
+              Premium mobile car detailing across Adelaide. One person, one standard.
             </p>
-            {/* Social links */}
-            <div className="flex gap-4">
-              <a
-                href="https://www.instagram.com/sebastiansautomotivedetailing"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Sebastian's Automotive Detailing on Instagram"
-                className="w-9 h-9 border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-muted)] hover:text-[var(--color-cream)] hover:border-[var(--color-border-hover)] transition-colors duration-200"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-              </a>
-              <a
-                href="https://www.facebook.com/share/18PDHaTVoQ/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Sebastian's Automotive Detailing on Facebook"
-                className="w-9 h-9 border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-muted)] hover:text-[var(--color-cream)] hover:border-[var(--color-border-hover)] transition-colors duration-200"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-              </a>
-            </div>
           </div>
 
-          {/* Services */}
+          {/* Quick links */}
           <div>
-            <h3 className="text-display text-lg tracking-widest uppercase text-[var(--color-cream)] mb-5">
-              Services
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              {services.map((s) => (
-                <li key={s.href}>
+            <p className="text-xs font-bold uppercase tracking-[0.1em] text-green-100/50 mb-4">Quick Links</p>
+            <ul className="flex flex-col gap-2.5" role="list">
+              {[
+                { label: 'Services', href: '/services' },
+                { label: 'Gallery', href: '/gallery' },
+                { label: 'Pricing', href: '/pricing' },
+                { label: 'Reviews', href: '/testimonials' },
+                { label: 'Get A Quote', href: '/contact' },
+              ].map((link) => (
+                <li key={link.href}>
                   <Link
-                    href={s.href}
-                    className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-cream)] transition-colors duration-200"
+                    href={link.href}
+                    className="text-sm text-green-100/70 hover:text-primary transition-colors"
                   >
-                    {s.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Pages */}
-          <div>
-            <h3 className="text-display text-lg tracking-widest uppercase text-[var(--color-cream)] mb-5">
-              Navigation
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              {pages.map((p) => (
-                <li key={p.href}>
-                  <Link
-                    href={p.href}
-                    className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-cream)] transition-colors duration-200"
-                  >
-                    {p.label}
+                    {link.label}
                   </Link>
                 </li>
               ))}
@@ -111,59 +47,68 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-display text-lg tracking-widest uppercase text-[var(--color-cream)] mb-5">
-              Get In Touch
-            </h3>
-            <address className="not-italic flex flex-col gap-4">
-              <div>
-                <p className="text-xs font-semibold tracking-widest uppercase text-[var(--color-text-faint)] mb-1">
-                  Phone / Text
-                </p>
+            <p className="text-xs font-bold uppercase tracking-[0.1em] text-green-100/50 mb-4">Contact</p>
+            <ul className="flex flex-col gap-2.5" role="list">
+              <li>
                 <a
-                  href="tel:+61415163873"
-                  className="text-base font-semibold text-[var(--color-cream)] hover:text-[var(--color-silver)] transition-colors duration-200"
+                  href={`tel:${contact.phone.replace(/\s/g, '')}`}
+                  className="text-sm text-green-100/70 hover:text-primary transition-colors"
                 >
-                  +61 415 163 873
+                  {contact.phoneFormatted}
                 </a>
-              </div>
-              <div>
-                <p className="text-xs font-semibold tracking-widest uppercase text-[var(--color-text-faint)] mb-1">
-                  Email
-                </p>
+              </li>
+              <li>
                 <a
-                  href="mailto:Sebastian@SADetailing.net"
-                  className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-cream)] transition-colors duration-200 break-all"
+                  href={`mailto:${contact.email}`}
+                  className="text-sm text-green-100/70 hover:text-primary transition-colors"
                 >
-                  Sebastian@SADetailing.net
+                  {contact.email}
                 </a>
-              </div>
-              <div>
-                <p className="text-xs font-semibold tracking-widest uppercase text-[var(--color-text-faint)] mb-1">
-                  Service Area
-                </p>
-                <p className="text-sm text-[var(--color-text-muted)]">
-                  Adelaide & surrounds, SA
-                </p>
-                <p className="text-xs text-[var(--color-text-faint)] mt-1">
-                  Strictly mobile — we come to you.
-                </p>
-              </div>
-            </address>
+              </li>
+              <li>
+                <p className="text-sm text-green-100/70">{contact.note}</p>
+              </li>
+            </ul>
+
+            {/* Social */}
+            <div className="flex gap-4 mt-5">
+              {contact.instagram !== '#' && (
+                <a
+                  href={contact.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="text-green-100/50 hover:text-primary transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                  </svg>
+                </a>
+              )}
+              {contact.facebook !== '#' && (
+                <a
+                  href={contact.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="text-green-100/50 hover:text-primary transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </a>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-[var(--color-border)] py-6 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-xs text-[var(--color-text-faint)]">
+        <div className="border-t border-green-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-green-100/40">
             &copy; {year} Sebastian&apos;s Automotive Detailing. All rights reserved.
           </p>
-          <p className="text-xs text-[var(--color-text-faint)]">
-            Adelaide, South Australia
-          </p>
+          <p className="text-xs text-green-100/40">Adelaide, South Australia</p>
         </div>
       </div>
     </footer>
   )
 }
-
-export default Footer

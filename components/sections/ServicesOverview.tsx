@@ -1,184 +1,71 @@
-'use client'
-
-import { useRef } from 'react'
 import Link from 'next/link'
-import { LazyMotion, domMax, m, useInView } from 'framer-motion'
-import { SectionTitle } from '@/components/ui/SectionTitle'
+import type { Service } from '@/lib/cms'
+import SectionTitle from '@/components/ui/SectionTitle'
 
-const services = [
-  {
-    slug: 'interior-exterior-detailing',
-    title: 'Interior & Exterior Detailing',
-    short: 'A thorough full clean inside and out. Pre-sale, post-purchase, or just because. This is the baseline.',
-    icon: '◈',
-    tag: 'Most Popular',
-  },
-  {
-    slug: 'paint-rejuvenation',
-    title: 'Paint Rejuvenation',
-    short: 'Full machine cut & polish. Remove swirls, scratches and oxidation. Restore depth and gloss to tired paint.',
-    icon: '◉',
-    tag: "Sebastian's Specialty",
-  },
-  {
-    slug: 'ceramic-coating',
-    title: 'Ceramic Coating',
-    short: "The best protection you can put on a car. Includes full paint rejuvenation. Lasts years — not weeks.",
-    icon: '◆',
-    tag: 'Ultimate Protection',
-  },
-  {
-    slug: 'interior-details',
-    title: 'Interior Detail',
-    short: 'Deep clean every surface inside the cabin. Steam treatment, leather conditioning, odour elimination.',
-    icon: '◇',
-    tag: null,
-  },
-  {
-    slug: 'exterior-details',
-    title: 'Exterior Detail',
-    short: 'Hand wash, clay bar, tyre dress, glass treatment. Paint feels new without the full correction.',
-    icon: '◈',
-    tag: null,
-  },
+interface ServicesOverviewProps {
+  services: Service[]
+}
+
+const serviceIcons = [
+  // Car wash / detail icon
+  <svg key="detail" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+  </svg>,
+  // Polish/shine icon
+  <svg key="polish" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+  </svg>,
+  // Shield/coating icon
+  <svg key="coat" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+  </svg>,
 ]
 
-function ServiceCard({
-  slug,
-  title,
-  short,
-  icon,
-  tag,
-  index,
-}: {
-  slug: string
-  title: string
-  short: string
-  icon: string
-  tag: string | null
-  index: number
-}) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-60px' })
-
+export default function ServicesOverview({ services }: ServicesOverviewProps) {
   return (
-    <m.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-    >
-      <Link
-        href={`/services/${slug}`}
-        className="group block card-dark p-7 relative overflow-hidden h-full"
-        aria-label={`Learn more about ${title}`}
-      >
-        {/* Hover fill */}
-        <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          style={{ background: 'linear-gradient(135deg, var(--color-accent-dark), var(--color-accent-muted))' }}
-          aria-hidden="true"
-        />
-
-        {/* Tag badge */}
-        {tag && (
-          <span
-            className="relative z-10 inline-block text-[10px] font-semibold tracking-[0.2em] uppercase px-2.5 py-1 mb-5 border"
-            style={{
-              borderColor: 'var(--color-accent)',
-              color: 'var(--color-accent-light)',
-              background: 'var(--color-accent-dark)',
-            }}
-          >
-            {tag}
-          </span>
-        )}
-
-        {/* Icon */}
-        <div
-          className="relative z-10 text-3xl mb-4 transition-transform duration-300 group-hover:scale-110 origin-left"
-          style={{ color: 'var(--color-accent-light)' }}
-          aria-hidden="true"
-        >
-          {icon}
-        </div>
-
-        {/* Content */}
-        <h3
-          className="relative z-10 text-display text-2xl uppercase tracking-wider mb-3 transition-colors duration-300"
-          style={{ color: 'var(--color-cream)' }}
-        >
-          {title}
-        </h3>
-        <p
-          className="relative z-10 text-sm leading-relaxed mb-6 transition-colors duration-300"
-          style={{ color: 'var(--color-text-muted)' }}
-        >
-          {short}
-        </p>
-
-        {/* CTA arrow */}
-        <div
-          className="relative z-10 flex items-center gap-2 text-xs font-semibold tracking-widest uppercase transition-all duration-300 group-hover:gap-4"
-          style={{ color: 'var(--color-accent-light)' }}
-        >
-          <span>Learn More</span>
-          <span className="text-base leading-none">→</span>
-        </div>
-
-        {/* Top accent line */}
-        <div
-          className="absolute top-0 left-0 right-0 h-px transition-all duration-500"
-          style={{
-            background: 'linear-gradient(to right, var(--color-accent), transparent)',
-            opacity: 0.6,
-          }}
-          aria-hidden="true"
-        />
-      </Link>
-    </m.div>
-  )
-}
-
-export function ServicesOverview() {
-  return (
-    <LazyMotion features={domMax}>
-      <section
-        aria-labelledby="services-heading"
-        className="section-padding relative"
-        style={{ background: 'var(--color-bg)' }}
-      >
-        <div className="container-site">
+    <section className="section-pad bg-bg" aria-labelledby="services-heading">
+      <div className="container">
+        <div className="reveal mb-14">
           <SectionTitle
-            label="What We Do"
+            eyebrow="What We Offer"
             title="Services"
-            subtitle="Every service is performed personally by Sebastian. No subcontractors. No shortcuts."
-            className="mb-14"
+            subtitle="Three core services, each done properly. No shortcuts, no volume rushing."
+            centered
           />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {services.map((service, i) => (
-              <ServiceCard key={service.slug} {...service} index={i} />
-            ))}
-          </div>
-
-          {/* CTA row */}
-          <div className="mt-12 text-center">
-            <p className="text-sm text-[var(--color-text-muted)] mb-4">
-              Not sure which service is right for your car?
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase transition-colors duration-200 hover:gap-4"
-              style={{ color: 'var(--color-cream)' }}
-            >
-              Ask Sebastian directly →
-            </Link>
-          </div>
         </div>
-      </section>
-    </LazyMotion>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {services.map((service, i) => (
+            <article
+              key={service.slug}
+              className={`reveal reveal-delay-${i + 1} group bg-primary border border-forest/10 p-8 flex flex-col hover:shadow-lg transition-shadow`}
+            >
+              <div className="text-secondary mb-5">{serviceIcons[i]}</div>
+              <h3 className="font-heading text-[1.5rem] font-700 text-forest mb-3 leading-tight">
+                {service.title}
+              </h3>
+              <p className="text-forest/70 text-[15px] leading-relaxed flex-1 mb-6">
+                {service.shortDescription}
+              </p>
+              <div className="flex items-center justify-between mt-auto pt-5 border-t border-forest/10">
+                <span className="font-heading text-lg font-700 text-forest">
+                  From ${service.fromPrice}
+                </span>
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="text-[12px] font-bold uppercase tracking-[0.1em] text-secondary hover:underline underline-offset-4 decoration-2 transition-all group-hover:gap-2 flex items-center gap-1"
+                  aria-label={`Learn more about ${service.title}`}
+                >
+                  Learn More
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }
-
-export default ServicesOverview

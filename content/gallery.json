@@ -1,0 +1,50 @@
+[
+  {
+    "src": "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=800&q=80",
+    "alt": "Black BMW after machine polish — paint correction",
+    "location": "Norwood",
+    "service": "paint-rejuvenation"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80",
+    "alt": "Porsche 911 full exterior detail",
+    "location": "Unley",
+    "service": "interior-exterior-detail"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
+    "alt": "Red Ferrari after ceramic coating",
+    "location": "Burnside",
+    "service": "ceramic-coating"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    "alt": "Mercedes-Benz interior detail — leather conditioning",
+    "location": "Glenelg",
+    "service": "interior-exterior-detail"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=800&q=80",
+    "alt": "White SUV wash and detail",
+    "location": "Henley Beach",
+    "service": "interior-exterior-detail"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80",
+    "alt": "Paint correction close-up — swirl removal",
+    "location": "St Peters",
+    "service": "paint-rejuvenation"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80",
+    "alt": "Silver Audi after full detail",
+    "location": "Prospect",
+    "service": "interior-exterior-detail"
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80",
+    "alt": "Ceramic coating application — final inspection",
+    "location": "Kensington",
+    "service": "ceramic-coating"
+  }
+]

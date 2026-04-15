@@ -1,74 +1,39 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { LazyMotion, domMax, m, AnimatePresence } from 'framer-motion'
 
-const COOKIE_KEY = 'sad_cookie_consent'
-
-export function CookieConsent() {
+export default function CookieConsent() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const consent = localStorage.getItem(COOKIE_KEY)
-    if (!consent) {
-      // Delay slightly so it doesn't interfere with initial render
-      const timer = setTimeout(() => setVisible(true), 1500)
-      return () => clearTimeout(timer)
-    }
+    const accepted = localStorage.getItem('cookie_consent')
+    if (!accepted) setVisible(true)
   }, [])
 
   const accept = () => {
-    localStorage.setItem(COOKIE_KEY, 'accepted')
+    localStorage.setItem('cookie_consent', '1')
     setVisible(false)
   }
 
-  const decline = () => {
-    localStorage.setItem(COOKIE_KEY, 'declined')
-    setVisible(false)
-  }
+  if (!visible) return null
 
   return (
-    <LazyMotion features={domMax}>
-      <AnimatePresence>
-        {visible && (
-          <m.div
-            role="dialog"
-            aria-label="Cookie consent"
-            aria-live="polite"
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed bottom-0 left-0 right-0 z-[9000] md:bottom-6 md:left-6 md:right-auto"
-          >
-            <div
-              className="surface-1 border border-[var(--color-border)] p-5 md:p-6 max-w-sm md:rounded-none shadow-card"
-              style={{ borderTop: '1px solid var(--color-accent)' }}
-            >
-              <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
-                We use cookies to analyse site traffic and improve your experience. Nothing
-                sketchy — just basic analytics.
-              </p>
-              <div className="flex gap-3">
-                <button
-                  onClick={accept}
-                  className="flex-1 bg-[var(--color-accent)] text-[var(--color-cream)] text-xs font-semibold uppercase tracking-widest py-2.5 px-4 hover:bg-[var(--color-accent-light)] transition-colors duration-200"
-                >
-                  Accept
-                </button>
-                <button
-                  onClick={decline}
-                  className="flex-1 bg-transparent text-[var(--color-text-muted)] text-xs font-semibold uppercase tracking-widest py-2.5 px-4 border border-[var(--color-border)] hover:border-[var(--color-border-hover)] hover:text-[var(--color-cream)] transition-colors duration-200"
-                >
-                  Decline
-                </button>
-              </div>
-            </div>
-          </m.div>
-        )}
-      </AnimatePresence>
-    </LazyMotion>
+    <div
+      role="region"
+      aria-label="Cookie consent"
+      className="fixed bottom-0 left-0 right-0 z-50 bg-forest text-primary border-t border-green-800 px-4 py-4 sm:px-6"
+    >
+      <div className="container flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <p className="text-sm text-green-100/90">
+          This site uses functional cookies to ensure it works correctly. No tracking or advertising cookies are used.
+        </p>
+        <button
+          onClick={accept}
+          className="shrink-0 bg-secondary text-white text-sm font-bold uppercase tracking-[0.08em] px-5 py-2.5 hover:bg-blue-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+        >
+          Accept
+        </button>
+      </div>
+    </div>
   )
 }
-
-export default CookieConsent

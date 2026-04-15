@@ -1,0 +1,13 @@
+{
+  "headline": "Adelaide's Mobile Car Detailing, Done Right.",
+  "subheadline": "We come to you. Premium results. One person, one standard.",
+  "ctaPrimary": {
+    "label": "Get A Free Quote",
+    "href": "/contact"
+  },
+  "ctaSecondary": {
+    "label": "Call Or Text",
+    "href": "tel:+61415163873"
+  },
+  "backgroundImage": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1920&q=80"
+}

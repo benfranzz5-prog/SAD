@@ -1,196 +1,57 @@
-'use client'
-
-import { useRef } from 'react'
-import { LazyMotion, domMax, m, useInView } from 'framer-motion'
-import { SectionTitle } from '@/components/ui/SectionTitle'
-
-const PLACEHOLDER_TESTIMONIALS = [
-  {
-    id: 1,
-    quote:
-      "Sebastian did an incredible job on my Audi Q5. The paint correction alone made it look better than when I bought it. Worth every cent.",
-    customer_name: 'James R.',
-    location: 'Glenelg, SA',
-    vehicle: '2020 Audi Q5',
-    rating: 5,
-    featured: true,
-  },
-  {
-    id: 2,
-    quote:
-      "Had the full ceramic coating done. Sebastian was professional, thorough, and the results speak for themselves. My car has never looked this good.",
-    customer_name: 'Sarah M.',
-    location: 'Norwood, SA',
-    vehicle: '2019 Mercedes C-Class',
-    rating: 5,
-    featured: true,
-  },
-  {
-    id: 3,
-    quote:
-      "Booked Sebastian before selling my car and it made such a difference. Got $2,000 more than I was expecting. Will use him every time.",
-    customer_name: 'Tom K.',
-    location: 'Henley Beach, SA',
-    vehicle: '2017 Mazda CX-5',
-    rating: 5,
-    featured: true,
-  },
-  {
-    id: 4,
-    quote:
-      "The interior detail was unreal. Kids had absolutely destroyed the back seat. Sebastian got it back to showroom condition.",
-    customer_name: 'Lisa T.',
-    location: 'Tea Tree Gully, SA',
-    vehicle: '2018 Toyota RAV4',
-    rating: 5,
-    featured: false,
-  },
-]
-
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div className="flex gap-0.5" aria-label={`${rating} out of 5 stars`} role="img">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg
-          key={i}
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill={i < rating ? 'var(--color-accent-light)' : 'none'}
-          stroke="var(--color-accent-light)"
-          strokeWidth="1.5"
-          aria-hidden="true"
-        >
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-        </svg>
-      ))}
-    </div>
-  )
-}
-
-function TestimonialCard({
-  quote,
-  customer_name,
-  location,
-  vehicle,
-  rating,
-  index,
-}: {
-  quote: string
-  customer_name: string
-  location?: string | null
-  vehicle?: string | null
-  rating: number
-  index: number
-}) {
-  const ref = useRef<HTMLBlockquote>(null)
-  const isInView = useInView(ref, { once: true, margin: '-60px' })
-
-  return (
-    <m.blockquote
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className="card-dark p-7 flex flex-col gap-5"
-    >
-      <StarRating rating={rating} />
-      <p
-        className="text-base leading-relaxed flex-1 italic"
-        style={{ color: 'var(--color-text-muted)' }}
-      >
-        &ldquo;{quote}&rdquo;
-      </p>
-      <footer className="flex flex-col gap-1">
-        <cite className="not-italic font-semibold text-sm" style={{ color: 'var(--color-cream)' }}>
-          {customer_name}
-        </cite>
-        {(vehicle || location) && (
-          <p className="text-xs" style={{ color: 'var(--color-text-faint)' }}>
-            {vehicle && <span>{vehicle}</span>}
-            {vehicle && location && <span> · </span>}
-            {location && <span>{location}</span>}
-          </p>
-        )}
-      </footer>
-    </m.blockquote>
-  )
-}
+import Link from 'next/link'
+import type { Testimonial } from '@/lib/cms'
+import SectionTitle from '@/components/ui/SectionTitle'
+import StarRating from '@/components/ui/StarRating'
 
 interface TestimonialsSectionProps {
-  showAll?: boolean
+  testimonials: Testimonial[]
+  preview?: boolean
 }
 
-export function TestimonialsSection({ showAll = false }: TestimonialsSectionProps) {
-  const items = showAll
-    ? PLACEHOLDER_TESTIMONIALS
-    : PLACEHOLDER_TESTIMONIALS.filter((t) => t.featured)
+export default function TestimonialsSection({ testimonials, preview = false }: TestimonialsSectionProps) {
+  const items = preview ? testimonials.slice(0, 3) : testimonials
 
   return (
-    <LazyMotion features={domMax}>
-      <section
-        aria-labelledby="testimonials-heading"
-        className="section-padding relative overflow-hidden"
-        style={{ background: 'var(--color-surface-1)' }}
-      >
-        {/* Decorative accent element */}
-        <div
-          className="absolute top-0 left-0 w-px h-full opacity-20"
-          style={{ background: 'linear-gradient(to bottom, transparent, var(--color-accent), transparent)' }}
-          aria-hidden="true"
-        />
-
-        <div className="container-site">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <SectionTitle
-              id="testimonials-heading"
-              label="Client Stories"
-              title="Real Results. Real People."
-              className="flex-1"
-            />
-            {!showAll && (
-              <a
-                href="/testimonials"
-                className="text-xs font-semibold tracking-widest uppercase flex items-center gap-2 transition-all duration-200 hover:gap-4 shrink-0"
-                style={{ color: 'var(--color-text-muted)' }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-cream)')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-text-muted)')}
-              >
-                Read All Reviews →
-              </a>
-            )}
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            {items.map((t, i) => (
-              <TestimonialCard key={t.id} {...t} index={i} />
-            ))}
-          </div>
-
-          {/* Trust indicators */}
-          <div className="mt-12 pt-12 border-t border-[var(--color-border)] flex flex-wrap gap-8 items-center justify-center">
-            {[
-              { value: '5.0', label: 'Star Rating' },
-              { value: '100%', label: 'Mobile Service' },
-              { value: 'Adelaide', label: 'South Australia' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p
-                  className="text-display text-3xl tracking-wider mb-1"
-                  style={{ color: 'var(--color-cream)' }}
-                >
-                  {stat.value}
-                </p>
-                <p className="text-xs tracking-widest uppercase" style={{ color: 'var(--color-text-faint)' }}>
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
+    <section className="section-pad bg-primary" aria-labelledby="testimonials-heading">
+      <div className="container">
+        <div className="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+          <SectionTitle
+            eyebrow="Reviews"
+            title="What Adelaide says."
+          />
+          {preview && (
+            <Link
+              href="/testimonials"
+              className="shrink-0 text-[12px] font-bold uppercase tracking-[0.1em] text-secondary hover:underline underline-offset-4 decoration-2 flex items-center gap-1.5"
+            >
+              All Reviews
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </Link>
+          )}
         </div>
-      </section>
-    </LazyMotion>
+
+        <div className={`grid grid-cols-1 ${preview ? 'md:grid-cols-3' : 'md:grid-cols-2 lg:grid-cols-3'} gap-6`}>
+          {items.map((t, i) => (
+            <blockquote
+              key={i}
+              className={`reveal reveal-delay-${Math.min(i + 1, 4)} bg-accent border border-forest/10 p-7 flex flex-col`}
+            >
+              <StarRating rating={t.rating} className="mb-4" />
+              <p className="text-forest/80 text-[15px] leading-relaxed flex-1 mb-5">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <footer className="border-t border-forest/10 pt-4">
+                <cite className="not-italic">
+                  <span className="font-bold text-sm text-forest">{t.author}</span>
+                  <span className="text-forest/50 text-sm"> &middot; {t.suburb}</span>
+                </cite>
+              </footer>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }
-
-export default TestimonialsSection

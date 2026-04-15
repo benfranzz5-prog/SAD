@@ -1,0 +1,38 @@
+{
+  "home": {
+    "title": "Sebastian's Automotive Detailing | Mobile Car Detailing Adelaide",
+    "description": "Premium mobile car detailing in Adelaide. Interior & exterior details, cut & polish, and ceramic coating. We come to you — no drop-off required."
+  },
+  "services": {
+    "title": "Services | Sebastian's Automotive Detailing Adelaide",
+    "description": "Interior & exterior detail, paint rejuvenation, and ceramic coating services. Mobile car detailing across all Adelaide suburbs."
+  },
+  "serviceInteriorExterior": {
+    "title": "Interior & Exterior Detail | Sebastian's Automotive Detailing",
+    "description": "A thorough interior and exterior car detail in Adelaide. We come to you. Premium finish, not rushed volume work."
+  },
+  "servicePaintRejuvenation": {
+    "title": "Paint Rejuvenation / Cut & Polish | Sebastian's Automotive Detailing",
+    "description": "Machine polishing and paint correction in Adelaide. Restore your car's true gloss and remove swirl marks and scratches."
+  },
+  "serviceCeramicCoating": {
+    "title": "Ceramic Coating Adelaide | Sebastian's Automotive Detailing",
+    "description": "Professional ceramic coating in Adelaide. Includes full paint rejuvenation. Long-lasting gloss and chemical protection."
+  },
+  "gallery": {
+    "title": "Gallery | Sebastian's Automotive Detailing",
+    "description": "Before and after photos of car detailing work across Adelaide suburbs. Interior details, paint correction, and ceramic coatings."
+  },
+  "pricing": {
+    "title": "Pricing | Sebastian's Automotive Detailing",
+    "description": "Car detailing pricing in Adelaide. Interior & exterior from $220. Paint rejuvenation from $380. Ceramic coating from $900."
+  },
+  "testimonials": {
+    "title": "Reviews | Sebastian's Automotive Detailing",
+    "description": "Read what Adelaide customers say about Sebastian's Automotive Detailing. Five-star rated mobile car detailing service."
+  },
+  "contact": {
+    "title": "Get A Free Quote | Sebastian's Automotive Detailing",
+    "description": "Get a free car detailing quote in Adelaide. Fill in the form or call Sebastian directly on +61 415 163 873."
+  }
+}

@@ -1,0 +1,76 @@
+[
+  {
+    "slug": "interior-exterior-detail",
+    "title": "Interior & Exterior Detail",
+    "shortDescription": "A thorough clean inside and out — the essential reset your car deserves.",
+    "heroImage": "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=1200&q=80",
+    "steps": [
+      "Pre-rinse and foam bath to lift surface grime",
+      "Two-bucket hand wash — safe on all paint types",
+      "Wheel and tyre clean including brake dust removal",
+      "Door jambs, seals and rubber trim detail",
+      "Exterior glass clean (streak-free finish)",
+      "Tyre dressing applied",
+      "Interior vacuum — seats, carpets, boot",
+      "Dash, console and trim wipe-down with UV protectant",
+      "Interior glass clean",
+      "Leather or fabric seat wipe and condition (where applicable)",
+      "Air freshener finish"
+    ],
+    "whoFor": [
+      "Regular maintenance — keep your car in shape year-round",
+      "Pre-sale preparation — first impressions sell cars",
+      "Post-purchase refresh — start fresh with your new car",
+      "After a road trip or tough season"
+    ],
+    "fromPrice": 220,
+    "note": "Price varies by vehicle size. SUVs, vans and large 4WDs priced on inspection."
+  },
+  {
+    "slug": "paint-rejuvenation",
+    "title": "Paint Rejuvenation / Cut & Polish",
+    "shortDescription": "Machine polishing that restores your paint's true depth and gloss.",
+    "heroImage": "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=1200&q=80",
+    "steps": [
+      "Full exterior wash and decontamination",
+      "Clay bar treatment to remove bonded surface contamination",
+      "Machine polish — stage selected based on paint condition",
+      "Swirl marks, light scratches and oxidation removed",
+      "Panel wipe-down with IPA to reveal true correction result",
+      "Paint sealant or carnauba wax applied to finish and protect"
+    ],
+    "whoFor": [
+      "Cars with swirl marks and light scratches from automatic washes",
+      "Older paint that has dulled or oxidised",
+      "Anyone preparing for a ceramic coating (required as a first step)",
+      "Enthusiasts who want their paint looking its absolute best"
+    ],
+    "fromPrice": 380,
+    "note": "Sebastian's favourite service — most cars benefit from this more than they realise. Price depends on paint condition and vehicle size.",
+    "sebastianNote": "This is the service I recommend for most cars. You'd be surprised what a proper machine polish can uncover underneath years of wash scratches and oxidation."
+  },
+  {
+    "slug": "ceramic-coating",
+    "title": "Ceramic Coating",
+    "shortDescription": "A permanent chemical protection layer — gloss, slickness, and lasting defence.",
+    "heroImage": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80",
+    "steps": [
+      "Full exterior wash and decontamination",
+      "Clay bar treatment",
+      "Full machine polish (paint rejuvenation included as standard)",
+      "Panel wipe-down with IPA for a contamination-free surface",
+      "Ceramic coating applied panel by panel",
+      "Curing time observed — car kept dry for 24–48 hours post application",
+      "Final inspection and detail"
+    ],
+    "whoFor": [
+      "New car owners who want to protect their investment from day one",
+      "Enthusiasts who want maximum gloss and the easiest wash routine",
+      "Anyone tired of waxing every few months",
+      "Cars that have already been corrected and need long-term protection"
+    ],
+    "fromPrice": 900,
+    "note": "Ceramic coating always includes a full paint rejuvenation. Price depends on vehicle size, condition, and coating selected. Contact us to discuss options.",
+    "sebastianNote": "This is the top of the range — a proper coating lasts years, not weeks. I only apply coatings to paint that has been correctly prepared."
+  }
+]

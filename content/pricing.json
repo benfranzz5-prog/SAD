@@ -1,0 +1,17 @@
+[
+  {
+    "service": "Interior & Exterior Detail",
+    "from": 220,
+    "note": "Small to mid-size vehicles. SUVs, vans and large 4WDs vary."
+  },
+  {
+    "service": "Paint Rejuvenation / Cut & Polish",
+    "from": 380,
+    "note": "Includes decontamination, clay bar and machine polish. Price depends on paint condition and vehicle size."
+  },
+  {
+    "service": "Ceramic Coating",
+    "from": 900,
+    "note": "Includes full paint rejuvenation as standard. Multiple coating options available."
+  }
+]
