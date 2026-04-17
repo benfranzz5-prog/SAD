@@ -14,26 +14,26 @@ const differentiators = [
   {
     number: '03',
     title: 'Direct With The Detailer',
-    body: "You talk to Sebastian — the person who will actually be working on your car. No booking agents, no handoffs. You know exactly who's doing the work.",
+    body: "You talk to Sebastian — the person actually working on your car. No booking agents, no handoffs.",
   },
 ]
 
 export default function WhySebastians() {
   return (
-    <section className="bg-[#003B20] overflow-hidden" aria-labelledby="why-heading">
+    <section className="bg-green overflow-hidden" aria-labelledby="why-heading">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
 
-          {/* Left column: text content */}
+          {/* Left: text */}
           <div className="section-pad pr-0 lg:pr-16">
             <div className="reveal mb-14">
-              <p className="eyebrow mb-3 text-[#FFF8E6]/50">Why Sebastian's</p>
+              <p className="eyebrow mb-3 text-cream/40">Why Sebastian&apos;s</p>
               <h2
-                className="font-heading text-[#FFF8E6] leading-[1.0] tracking-[-0.02em]"
-                style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 800 }}
+                className="font-heading text-cream leading-[1.0]"
+                style={{ fontWeight: 700 }}
               >
                 The difference is<br />
-                in the details.
+                <em className="not-italic text-cream/70">in the details.</em>
               </h2>
             </div>
 
@@ -42,11 +42,11 @@ export default function WhySebastians() {
                 <div
                   key={item.number}
                   className={`reveal reveal-delay-${i + 1} flex gap-6 py-8 ${
-                    i < differentiators.length - 1 ? 'border-b border-white/10' : ''
+                    i < differentiators.length - 1 ? 'border-b border-cream/10' : ''
                   }`}
                 >
                   <span
-                    className="font-heading font-bold leading-none text-white/15 shrink-0 select-none"
+                    className="font-heading font-bold leading-none text-cream/12 shrink-0 select-none"
                     style={{ fontSize: 'clamp(2.5rem, 4vw, 3.5rem)' }}
                     aria-hidden="true"
                   >
@@ -54,33 +54,33 @@ export default function WhySebastians() {
                   </span>
                   <div>
                     <h3
-                      className="font-heading text-[#FFF8E6] font-bold leading-tight mb-2"
-                      style={{ fontSize: 'clamp(1.15rem, 2vw, 1.4rem)' }}
+                      className="font-heading text-cream font-semibold leading-tight mb-2"
+                      style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)' }}
                     >
                       {item.title}
                     </h3>
-                    <p className="text-[#FFF8E6]/60 text-[14px] leading-relaxed">{item.body}</p>
+                    <p className="font-body text-cream/55 text-[14px] leading-relaxed">{item.body}</p>
                   </div>
                 </div>
               ))}
             </div>
 
             {/* Membership callout */}
-            <div className="reveal mt-10 bg-white/5 border border-white/10 p-6">
-              <p className="eyebrow mb-2 text-[#FFF8E6]/40">Monthly Club</p>
+            <div className="reveal mt-10 bg-cream/5 border border-cream/12 p-6">
+              <p className="eyebrow mb-2 text-cream/35">Monthly Club</p>
               <p
-                className="font-heading text-[#FFF8E6] font-bold mb-2"
-                style={{ fontSize: 'clamp(1.2rem, 2vw, 1.5rem)' }}
+                className="font-heading text-cream font-semibold mb-2"
+                style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}
               >
                 Maintenance membership from $185/month
               </p>
-              <p className="text-[#FFF8E6]/55 text-[13px] leading-relaxed">
+              <p className="font-body text-cream/50 text-[13px] leading-relaxed">
                 Paint preservation, interior upkeep, and complimentary polishes. Keep your car in peak condition year-round.
               </p>
             </div>
           </div>
 
-          {/* Right column: image */}
+          {/* Right: image */}
           <div className="relative hidden lg:block">
             <Image
               src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=1200&q=80"
@@ -91,9 +91,7 @@ export default function WhySebastians() {
             />
             <div
               className="absolute inset-0"
-              style={{
-                background: 'linear-gradient(to right, #003B20 0%, transparent 30%)',
-              }}
+              style={{ background: 'linear-gradient(to right, #1D4B28 0%, transparent 30%)' }}
               aria-hidden="true"
             />
           </div>

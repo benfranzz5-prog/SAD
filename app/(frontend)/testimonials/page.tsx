@@ -17,7 +17,7 @@ export default function TestimonialsPage() {
 
   return (
     <>
-      <section className="pt-32 pb-16 bg-forest" aria-label="Reviews header">
+      <section className="pt-32 pb-16 bg-green" aria-label="Reviews header">
         <div className="container">
           <SectionTitle
             eyebrow="Customer Reviews"

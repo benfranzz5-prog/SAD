@@ -1,16 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-primary: #FFF8E6;
-  --color-secondary: #0000EE;
-  --color-accent: #EBEDEC;
-  --color-bg: #E8E6E6;
-  --color-text: #003B20;
-  --color-link: #003B20;
+  /* Brand colors — from the SAD logo */
+  --color-green:      #1D4B28;   /* dark forest green (logo bg) */
+  --color-green-dark: #122E19;   /* deeper green for hover / footer */
+  --color-green-mid:  #2A6035;   /* mid green for borders/dividers */
+  --color-cream:      #D9CCBA;   /* warm cream (logo car & text) */
+  --color-cream-light:#F2EDE5;   /* light cream for section backgrounds */
+  --color-off-white:  #FAF8F5;   /* near-white warm background */
+  --color-white:      #FFFFFF;
+
+  /* Text */
+  --color-text:       #1A2E1C;   /* very dark green-black for body */
+  --color-text-muted: #4A6053;   /* muted green-gray for secondary */
 }
 
 @layer base {
@@ -19,9 +25,9 @@
   }
 
   body {
-    background-color: var(--color-bg);
+    background-color: var(--color-off-white);
     color: var(--color-text);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Barlow', Arial, Helvetica, sans-serif;
     font-size: 17px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -29,11 +35,11 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Barlow Condensed', 'DIN Alternate', 'Arial Narrow', sans-serif;
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     font-weight: 700;
     line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--color-text);
+    letter-spacing: -0.01em;
+    color: var(--color-green);
   }
 
   h1 { font-size: clamp(2.25rem, 6vw, 5.5rem); }
@@ -41,7 +47,7 @@
   h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
 
   a {
-    color: var(--color-link);
+    color: var(--color-green);
     text-decoration: none;
   }
 
@@ -50,13 +56,13 @@
   }
 
   ::selection {
-    background: var(--color-secondary);
-    color: #fff;
+    background: var(--color-green);
+    color: var(--color-cream);
   }
 }
 
 @layer components {
-  /* Scroll reveal utility — JS adds .is-visible class via IntersectionObserver */
+  /* Scroll reveal */
   .reveal {
     opacity: 0;
     transform: translateY(28px);
@@ -73,7 +79,7 @@
   .reveal-delay-3 { transition-delay: 0.3s; }
   .reveal-delay-4 { transition-delay: 0.4s; }
 
-  /* Hero entrance animations — applied immediately on load */
+  /* Hero entrance animations */
   .hero-title {
     opacity: 0;
     transform: translateY(30px);
@@ -97,14 +103,19 @@
     animation: fadeIn 1s ease 1.2s forwards;
   }
 
+  /* Brand script font — used for logo text */
+  .font-script {
+    font-family: 'Great Vibes', cursive;
+  }
+
   /* Eyebrow labels */
   .eyebrow {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Barlow', Arial, Helvetica, sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-secondary);
+    color: var(--color-green-mid);
   }
 
   /* Section padding */
@@ -128,64 +139,65 @@
       padding-right: 2.5rem;
     }
   }
-}
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+  /* Primary button */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-green);
+    color: var(--color-cream);
+    font-family: 'Barlow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1rem 2.25rem;
+    transition: background-color 0.2s ease;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .btn-primary:hover {
+    background-color: var(--color-green-dark);
+  }
+
+  /* Outline button */
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid currentColor;
+    font-family: 'Barlow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1rem 2.25rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes scrollBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
-}
-
-/* Scale utility for gallery hover */
-.group:hover .group-hover\:scale-103 {
-  transform: scale(1.03);
-}
-
-/* Thin border utility */
-.border-[#003B20]\/8 {
-  border-color: rgba(0,59,32,0.08);
-}
-
-/* Navbar transparent-to-solid scroll effect */
+/* Navbar states */
 .navbar-transparent {
   background: transparent;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .navbar-solid {
-  background: var(--color-primary);
-  border-bottom: 1px solid rgba(0,59,32,0.1);
-  box-shadow: 0 1px 0 rgba(0,59,32,0.05);
+  background: var(--color-off-white);
+  border-bottom: 1px solid rgba(29,75,40,0.12);
+  box-shadow: 0 1px 0 rgba(29,75,40,0.04);
 }
 
-/* Focus styles for accessibility */
+/* Focus styles */
 :focus-visible {
-  outline: 2px solid var(--color-secondary);
+  outline: 2px solid var(--color-green);
   outline-offset: 3px;
 }
 
-/* Star rating */
-.stars {
-  color: #f59e0b;
-  letter-spacing: 0.05em;
-}
+/* Stars */
+.stars { color: #c9a84c; }
 
-/* Admin-specific styles */
+/* Admin */
 .admin-sidebar-link {
   display: flex;
   align-items: center;
@@ -207,4 +219,28 @@
 .admin-sidebar-link.active {
   background: #EFF6FF;
   color: #1D4ED8;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.25s ease forwards;
 }

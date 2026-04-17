@@ -21,16 +21,15 @@ export default function GalleryGrid({ items, services }: GalleryGridProps) {
 
   return (
     <div>
-      {/* Filter tabs */}
       <div className="flex flex-wrap gap-2 mb-10" role="group" aria-label="Filter by service">
         {filterOptions.map((opt) => (
           <button
             key={opt.value}
             onClick={() => setFilter(opt.value)}
-            className={`text-xs font-bold uppercase tracking-[0.08em] px-5 py-2.5 border transition-colors ${
+            className={`font-body text-[11px] font-bold uppercase tracking-[0.1em] px-5 py-2.5 border transition-colors ${
               filter === opt.value
-                ? 'bg-forest text-primary border-forest'
-                : 'bg-transparent text-forest border-forest/30 hover:border-forest'
+                ? 'bg-green text-cream border-green'
+                : 'bg-transparent text-green border-green/25 hover:border-green'
             }`}
             aria-pressed={filter === opt.value}
           >
@@ -39,12 +38,11 @@ export default function GalleryGrid({ items, services }: GalleryGridProps) {
         ))}
       </div>
 
-      {/* Grid */}
       <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
         {filtered.map((item, i) => (
           <div
             key={i}
-            className="relative group overflow-hidden break-inside-avoid bg-forest/10"
+            className="relative group overflow-hidden break-inside-avoid bg-green/8"
           >
             <div className="relative w-full" style={{ aspectRatio: i % 5 === 0 ? '3/4' : '4/3' }}>
               <Image
@@ -55,12 +53,11 @@ export default function GalleryGrid({ items, services }: GalleryGridProps) {
                 sizes="(max-width: 768px) 50vw, 25vw"
               />
             </div>
-            {/* Tags overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <p className="text-white text-xs font-bold uppercase tracking-[0.08em]">
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-green-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p className="font-body text-cream text-[10px] font-bold uppercase tracking-[0.1em]">
                 {item.location}
               </p>
-              <p className="text-white/60 text-[11px] uppercase tracking-[0.06em] mt-0.5">
+              <p className="font-body text-cream/55 text-[10px] uppercase tracking-[0.06em] mt-0.5">
                 {services.find((s) => s.slug === item.service)?.title ?? item.service}
               </p>
             </div>
@@ -69,7 +66,7 @@ export default function GalleryGrid({ items, services }: GalleryGridProps) {
       </div>
 
       {filtered.length === 0 && (
-        <p className="text-forest/50 text-center py-12">No photos for this filter yet.</p>
+        <p className="font-body text-green/45 text-center py-12">No photos for this filter yet.</p>
       )}
     </div>
   )

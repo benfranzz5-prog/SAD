@@ -12,23 +12,20 @@ export default function TestimonialsSection({ testimonials, preview = false }: T
   const [featured, ...rest] = items
 
   return (
-    <section className="section-pad bg-[#FFF8E6]" aria-labelledby="testimonials-heading">
+    <section className="section-pad bg-off-white" aria-labelledby="testimonials-heading">
       <div className="container">
         {/* Header */}
         <div className="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
             <p className="eyebrow mb-3">Reviews</p>
-            <h2
-              className="font-heading text-[#003B20] leading-[1.02] tracking-[-0.02em]"
-              style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 800 }}
-            >
+            <h2 className="font-heading text-green leading-[1.02]" style={{ fontWeight: 700 }}>
               What Adelaide says.
             </h2>
           </div>
           {preview && (
             <Link
               href="/testimonials"
-              className="shrink-0 flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.12em] text-[#0000EE] hover:gap-3 transition-all"
+              className="shrink-0 font-body flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.12em] text-green hover:text-green-mid hover:gap-3 transition-all"
             >
               All Reviews
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
@@ -38,33 +35,31 @@ export default function TestimonialsSection({ testimonials, preview = false }: T
           )}
         </div>
 
-        {/* Featured testimonial */}
+        {/* Featured */}
         {featured && (
-          <div className="reveal mb-8 bg-[#003B20] p-8 md:p-12 relative overflow-hidden">
-            {/* Large quote mark */}
+          <div className="reveal mb-8 bg-green p-8 md:p-12 relative overflow-hidden">
             <span
-              className="absolute top-4 right-8 font-heading text-white/5 select-none leading-none"
-              style={{ fontSize: '12rem', fontWeight: 800, lineHeight: 1 }}
+              className="absolute top-4 right-8 font-heading text-cream/5 select-none leading-none"
+              style={{ fontSize: '12rem', fontWeight: 700, lineHeight: 1 }}
               aria-hidden="true"
             >
               &ldquo;
             </span>
-
             <div className="relative z-10 max-w-3xl">
               <StarRating rating={featured.rating} className="mb-6" light />
               <blockquote>
                 <p
-                  className="font-heading text-[#FFF8E6] leading-snug tracking-[-0.01em] mb-8"
-                  style={{ fontSize: 'clamp(1.3rem, 3vw, 2rem)', fontWeight: 700 }}
+                  className="font-heading text-cream leading-snug mb-8 italic"
+                  style={{ fontSize: 'clamp(1.3rem, 3vw, 1.9rem)', fontWeight: 500 }}
                 >
                   &ldquo;{featured.quote}&rdquo;
                 </p>
                 <footer>
                   <cite className="not-italic flex items-center gap-3">
-                    <div className="w-8 h-px bg-white/20" />
+                    <div className="w-8 h-px bg-cream/20" />
                     <div>
-                      <span className="block text-[#FFF8E6] font-bold text-[13px]">{featured.author}</span>
-                      <span className="block text-[#FFF8E6]/50 text-[12px] uppercase tracking-[0.1em]">{featured.suburb}, Adelaide</span>
+                      <span className="block font-body text-cream font-bold text-[13px]">{featured.author}</span>
+                      <span className="block font-body text-cream/45 text-[11px] uppercase tracking-[0.1em]">{featured.suburb}, Adelaide</span>
                     </div>
                   </cite>
                 </footer>
@@ -73,29 +68,29 @@ export default function TestimonialsSection({ testimonials, preview = false }: T
           </div>
         )}
 
-        {/* Secondary testimonials grid */}
+        {/* Secondary grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {rest.map((t, i) => (
             <blockquote
               key={i}
-              className={`reveal reveal-delay-${i + 1} bg-[#EBEDEC] p-6 flex flex-col border border-[#003B20]/8`}
+              className={`reveal reveal-delay-${i + 1} bg-cream-light p-6 flex flex-col border border-green/8`}
             >
               <StarRating rating={t.rating} className="mb-4" />
-              <p className="text-[#003B20]/75 text-[14px] leading-relaxed flex-1 mb-4">
+              <p className="font-body text-green/70 text-[14px] leading-relaxed flex-1 mb-4">
                 &ldquo;{t.quote}&rdquo;
               </p>
-              <footer className="border-t border-[#003B20]/10 pt-4">
+              <footer className="border-t border-green/10 pt-4">
                 <cite className="not-italic">
-                  <span className="font-bold text-[13px] text-[#003B20]">{t.author}</span>
-                  <span className="text-[#003B20]/50 text-[13px]"> &middot; {t.suburb}</span>
+                  <span className="font-body font-bold text-[13px] text-green">{t.author}</span>
+                  <span className="font-body text-green/45 text-[13px]"> &middot; {t.suburb}</span>
                 </cite>
               </footer>
             </blockquote>
           ))}
         </div>
 
-        {/* Google rating footer */}
-        <div className="reveal mt-8 flex flex-col sm:flex-row items-center gap-3 pt-8 border-t border-[#003B20]/10">
+        {/* Rating footer */}
+        <div className="reveal mt-8 flex flex-col sm:flex-row items-center gap-3 pt-8 border-t border-green/10">
           <div className="flex gap-1">
             {[...Array(5)].map((_, i) => (
               <svg key={i} className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -103,7 +98,7 @@ export default function TestimonialsSection({ testimonials, preview = false }: T
               </svg>
             ))}
           </div>
-          <p className="text-[#003B20]/50 text-[12px] uppercase tracking-[0.1em]" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
+          <p className="font-body text-green/40 text-[11px] uppercase tracking-[0.1em]">
             5.0 rating &middot; Google Reviews &middot; Adelaide
           </p>
         </div>

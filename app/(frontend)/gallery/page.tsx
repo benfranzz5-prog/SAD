@@ -18,7 +18,7 @@ export default function GalleryPage() {
 
   return (
     <>
-      <section className="pt-32 pb-16 bg-forest" aria-label="Gallery header">
+      <section className="pt-32 pb-16 bg-green" aria-label="Gallery header">
         <div className="container">
           <SectionTitle
             eyebrow="Our Work"
@@ -29,7 +29,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-bg" aria-label="Photo gallery">
+      <section className="section-pad bg-off-white" aria-label="Photo gallery">
         <div className="container">
           <GalleryGrid items={gallery} services={services} />
         </div>

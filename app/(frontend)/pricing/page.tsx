@@ -17,7 +17,7 @@ export default function PricingPage() {
 
   return (
     <>
-      <section className="pt-32 pb-16 bg-forest" aria-label="Pricing header">
+      <section className="pt-32 pb-16 bg-green" aria-label="Pricing header">
         <div className="container">
           <SectionTitle
             eyebrow="Investment"
@@ -28,22 +28,22 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-bg" aria-label="Pricing table">
+      <section className="section-pad bg-off-white" aria-label="Pricing table">
         <div className="container max-w-3xl">
-          <div className="flex flex-col divide-y divide-forest/10 bg-primary border border-forest/10 mb-8">
+          <div className="flex flex-col divide-y divide-green/10 bg-cream-light border border-green/10 mb-8">
             {pricing.map((item, i) => (
               <div
                 key={i}
                 className="reveal flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-8 py-7"
               >
                 <div className="flex-1">
-                  <h2 className="font-heading text-[1.35rem] font-700 text-forest leading-tight mb-1">
+                  <h2 className="font-heading text-[1.35rem] font-bold text-green leading-tight mb-1">
                     {item.service}
                   </h2>
-                  <p className="text-forest/60 text-sm">{item.note}</p>
+                  <p className="text-green/60 text-sm">{item.note}</p>
                 </div>
                 <div className="shrink-0 text-right">
-                  <p className="font-heading text-[2rem] font-800 text-forest leading-none">
+                  <p className="font-heading text-[2rem] font-bold text-green leading-none">
                     From ${item.from}
                   </p>
                 </div>
@@ -52,16 +52,16 @@ export default function PricingPage() {
           </div>
 
           {/* Disclaimer */}
-          <aside className="bg-accent border border-forest/10 px-7 py-6 mb-10">
-            <p className="text-forest/70 text-[15px] leading-relaxed">
-              <strong className="text-forest">Please note:</strong> All pricing shown is a starting guide. Final pricing depends on your vehicle&apos;s size, make, and condition. Contact us for a free, no-obligation quote tailored to your car.
+          <aside className="bg-cream-light border border-green/10 px-7 py-6 mb-10">
+            <p className="text-green/70 text-[15px] leading-relaxed">
+              <strong className="text-green">Please note:</strong> All pricing shown is a starting guide. Final pricing depends on your vehicle&apos;s size, make, and condition. Contact us for a free, no-obligation quote tailored to your car.
             </p>
           </aside>
 
           <div className="text-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center bg-secondary text-white font-heading font-700 uppercase tracking-[0.08em] text-sm px-9 py-4 hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center justify-center bg-green text-white font-heading font-bold uppercase tracking-[0.08em] text-sm px-9 py-4 hover:bg-green-dark transition-colors"
             >
               Get A Free Quote
             </Link>

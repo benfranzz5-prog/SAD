@@ -10,22 +10,19 @@ export default function GalleryPreview({ items }: GalleryPreviewProps) {
   const preview = items.slice(0, 5)
 
   return (
-    <section className="section-pad bg-[#EBEDEC]" aria-labelledby="gallery-heading">
+    <section className="section-pad bg-cream-light" aria-labelledby="gallery-heading">
       <div className="container">
         {/* Header */}
         <div className="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
           <div>
             <p className="eyebrow mb-3">Our Work</p>
-            <h2
-              className="font-heading text-[#003B20] leading-[1.02] tracking-[-0.02em]"
-              style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 800 }}
-            >
+            <h2 className="font-heading text-green leading-[1.02]" style={{ fontWeight: 700 }}>
               Results speak<br />for themselves.
             </h2>
           </div>
           <Link
             href="/gallery"
-            className="shrink-0 flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.12em] text-[#0000EE] hover:gap-3 transition-all"
+            className="shrink-0 font-body flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.12em] text-green hover:text-green-mid hover:gap-3 transition-all"
           >
             View All Work
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
@@ -34,11 +31,11 @@ export default function GalleryPreview({ items }: GalleryPreviewProps) {
           </Link>
         </div>
 
-        {/* Magazine grid: 1 tall left + 2×2 right */}
+        {/* Magazine grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {/* Feature — tall, spans 2 rows on md */}
+          {/* Feature — tall, 2 rows on md */}
           <div
-            className="col-span-1 md:row-span-2 reveal relative group overflow-hidden bg-[#003B20]/10"
+            className="col-span-1 md:row-span-2 reveal relative group overflow-hidden bg-green/10"
             style={{ aspectRatio: '3/4' }}
           >
             {preview[0] && (
@@ -52,17 +49,17 @@ export default function GalleryPreview({ items }: GalleryPreviewProps) {
                   priority
                 />
                 <div
-                  className="absolute inset-0 transition-opacity duration-500"
+                  className="absolute inset-0"
                   style={{
-                    background: 'linear-gradient(to top, rgba(0,59,32,0.85) 0%, rgba(0,59,32,0.0) 60%)',
+                    background: 'linear-gradient(to top, rgba(18,46,25,0.88) 0%, rgba(18,46,25,0.0) 55%)',
                   }}
                   aria-hidden="true"
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/50 mb-1">
+                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.15em] text-cream/45 mb-1">
                     {preview[0].location}
                   </p>
-                  <p className="font-heading text-[#FFF8E6] font-bold leading-tight" style={{ fontSize: '1.1rem' }}>
+                  <p className="font-heading text-cream font-semibold leading-tight" style={{ fontSize: '1.05rem' }}>
                     {preview[0].alt}
                   </p>
                 </div>
@@ -74,7 +71,7 @@ export default function GalleryPreview({ items }: GalleryPreviewProps) {
           {preview.slice(1, 5).map((item, i) => (
             <div
               key={i}
-              className={`reveal reveal-delay-${i + 1} relative group overflow-hidden bg-[#003B20]/10`}
+              className={`reveal reveal-delay-${i + 1} relative group overflow-hidden bg-green/10`}
               style={{ aspectRatio: '4/3' }}
             >
               <Image
@@ -86,11 +83,11 @@ export default function GalleryPreview({ items }: GalleryPreviewProps) {
               />
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400"
-                style={{ background: 'rgba(0,59,32,0.5)' }}
+                style={{ background: 'rgba(18,46,25,0.5)' }}
                 aria-hidden="true"
               />
-              <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-white/80">
+              <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="font-body text-[10px] font-bold uppercase tracking-[0.12em] text-cream/80">
                   {item.location}
                 </p>
               </div>
@@ -98,18 +95,11 @@ export default function GalleryPreview({ items }: GalleryPreviewProps) {
           ))}
         </div>
 
-        {/* Bottom label strip */}
         <div className="reveal mt-5 flex items-center justify-between">
-          <p
-            className="text-[11px] uppercase tracking-[0.15em] text-[#003B20]/40"
-            style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
-          >
+          <p className="font-body text-[11px] uppercase tracking-[0.15em] text-green/35">
             Adelaide — Norwood, Burnside, Glenelg &amp; more
           </p>
-          <p
-            className="text-[11px] uppercase tracking-[0.15em] text-[#003B20]/40"
-            style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
-          >
+          <p className="font-body text-[11px] uppercase tracking-[0.15em] text-green/35">
             Real results. No filters.
           </p>
         </div>

@@ -5,23 +5,19 @@ type Variant = 'primary' | 'secondary' | 'outline' | 'ghost'
 type Size = 'sm' | 'md' | 'lg'
 
 const base =
-  'inline-flex items-center justify-center font-heading font-700 tracking-wide uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none'
+  'inline-flex items-center justify-center font-body font-bold tracking-wide uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none'
 
 const variants: Record<Variant, string> = {
-  primary:
-    'bg-secondary text-white hover:bg-blue-700 active:bg-blue-800',
-  secondary:
-    'bg-forest text-primary hover:bg-green-950 active:bg-green-900',
-  outline:
-    'border-2 border-white text-white hover:bg-white hover:text-forest',
-  ghost:
-    'text-forest hover:text-secondary underline underline-offset-4 decoration-2',
+  primary:  'bg-green text-cream hover:bg-green-dark',
+  secondary:'bg-green-dark text-cream hover:bg-green',
+  outline:  'border border-green text-green hover:bg-green hover:text-cream',
+  ghost:    'text-green hover:text-green-mid underline underline-offset-4 decoration-2',
 }
 
 const sizes: Record<Size, string> = {
-  sm: 'px-5 py-2.5 text-xs tracking-[0.1em]',
-  md: 'px-7 py-3.5 text-sm tracking-[0.08em]',
-  lg: 'px-9 py-4 text-base tracking-[0.08em]',
+  sm: 'px-5 py-2.5 text-[11px] tracking-[0.12em]',
+  md: 'px-7 py-3.5 text-[12px] tracking-[0.1em]',
+  lg: 'px-9 py-4 text-[13px] tracking-[0.1em]',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

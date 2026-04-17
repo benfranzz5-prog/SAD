@@ -18,22 +18,21 @@ export default function SectionTitle({
   return (
     <div className={`${centered ? 'text-center' : ''} ${className}`}>
       {eyebrow && (
-        <p className={`eyebrow mb-3 ${light ? 'text-green-200' : 'text-secondary'}`}>
+        <p className={`eyebrow mb-3 ${light ? 'text-cream/40' : ''}`}>
           {eyebrow}
         </p>
       )}
       <h2
-        className={`font-heading text-h2 leading-[1.02] tracking-[-0.02em] ${
-          light ? 'text-primary' : 'text-forest'
-        }`}
+        className={`font-heading leading-[1.02] ${light ? 'text-cream' : 'text-green'}`}
+        style={{ fontWeight: 700 }}
       >
         {title}
       </h2>
       {subtitle && (
         <p
-          className={`mt-5 text-[17px] leading-relaxed max-w-2xl ${
+          className={`mt-5 font-body text-[17px] leading-relaxed max-w-2xl ${
             centered ? 'mx-auto' : ''
-          } ${light ? 'text-green-100/80' : 'text-forest/70'}`}
+          } ${light ? 'text-cream/65' : 'text-green/65'}`}
         >
           {subtitle}
         </p>

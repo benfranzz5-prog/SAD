@@ -21,15 +21,15 @@ export default function CookieConsent() {
     <div
       role="region"
       aria-label="Cookie consent"
-      className="fixed bottom-0 left-0 right-0 z-50 bg-forest text-primary border-t border-green-800 px-4 py-4 sm:px-6"
+      className="fixed bottom-0 left-0 right-0 z-50 bg-green text-cream border-t border-cream/10 px-4 py-4 sm:px-6"
     >
       <div className="container flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-        <p className="text-sm text-green-100/90">
+        <p className="font-body text-sm text-cream/80">
           This site uses functional cookies to ensure it works correctly. No tracking or advertising cookies are used.
         </p>
         <button
           onClick={accept}
-          className="shrink-0 bg-secondary text-white text-sm font-bold uppercase tracking-[0.08em] px-5 py-2.5 hover:bg-blue-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+          className="shrink-0 btn-primary text-[11px]"
         >
           Accept
         </button>
