@@ -2,15 +2,16 @@ interface StarRatingProps {
   rating: number
   max?: number
   className?: string
+  light?: boolean
 }
 
-export default function StarRating({ rating, max = 5, className = '' }: StarRatingProps) {
+export default function StarRating({ rating, max = 5, className = '', light = false }: StarRatingProps) {
   return (
     <div className={`flex items-center gap-0.5 ${className}`} aria-label={`${rating} out of ${max} stars`}>
       {Array.from({ length: max }).map((_, i) => (
         <svg
           key={i}
-          className={`w-4 h-4 ${i < rating ? 'text-amber-400' : 'text-gray-300'}`}
+          className={`w-4 h-4 ${i < rating ? 'text-amber-400' : light ? 'text-white/20' : 'text-gray-300'}`}
           fill="currentColor"
           viewBox="0 0 20 20"
           aria-hidden="true"
